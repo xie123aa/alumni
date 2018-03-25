@@ -1,6 +1,5 @@
 package george.xie.dao;
 
-import george.xie.entity.User;
 import george.xie.entity.UserEntity;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
