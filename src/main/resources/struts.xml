@@ -20,6 +20,11 @@
 		<action name="userAction" class="userAction" >
 
 		</action>
+		<!--用户登陆-->
+		<action name="loginAction" class="userAction" method="login">
+			<result name="success">/success.jsp</result>
+			<result name="error">/failed.jsp</result>
+		</action>
 
 	</package>
 </struts>

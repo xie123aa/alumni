@@ -33,7 +33,7 @@
 		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
 	<!--配置Action对象    -->
-	<bean id="userAction" class="george.xie.atcion.UserAction" scope="prototype" >
+	<bean id="userAction" class="george.xie.atcion.UserAction" scope="prototype"  >
         <!--注入service-->
         <property name="userService" ref="userService"></property>
     </bean>

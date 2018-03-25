@@ -1,6 +1,7 @@
 package george.xie.service;
 
 import george.xie.dao.UserDao;
+import george.xie.entity.UserEntity;
 
 import javax.transaction.Transactional;
 
@@ -15,5 +16,11 @@ public class UserService {
     public void add(){
         System.out.println("service*******");
         userDao.add();
+    }
+    /**
+     * 登陆检测
+     */
+    public UserEntity login(UserEntity userEntity){
+        return userDao.login(userEntity);
     }
 }
