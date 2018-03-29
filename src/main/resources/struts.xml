@@ -16,14 +16,25 @@
 
 	<!-- 通用package -->
 	<package name="customer" namespace="/" extends="struts-default">
+		<!--拦截器配置-->
+		<interceptors>
+		<interceptor name="loginCheck" class="george.xie.interceptor.UserInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="loginCheck"></interceptor-ref>
+			</interceptor-stack>
+			
+	</interceptors>
+		<!--执行拦截器-->
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
 
 		<action name="userAction" class="userAction" >
 
 		</action>
 		<!--用户登陆-->
 		<action name="loginAction" class="userAction" method="login">
-			<result name="success">/success.jsp</result>
-			<result name="error">/failed.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="error">/login.jsp</result>
 		</action>
 
 	</package>

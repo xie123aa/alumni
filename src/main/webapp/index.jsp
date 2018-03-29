@@ -13,6 +13,7 @@
 </head>
 <body>
 登陆成功
+欢迎您${sessionScope.userInfo.username}<br>
 
 </body>
 </html>

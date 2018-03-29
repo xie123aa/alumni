@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: george
@@ -11,17 +12,23 @@
     <title>登陆界面</title>
 </head>
 <body>
+<s:if test="hasActionErrors()">
+    <div class="errors">
+        <s:actionerror/>
+    </div>
+</s:if>
+
 <center>
     <h1 style="color:red">登录</h1>
     <form id="indexform" name="indexForm" action="loginAction.action" method="post">
         <table border="0">
             <tr>
                 <td>账号：</td>
-                <td><input type="text" name="username"></td>
+                <td><input type="text" name="userEntity.username"></td>
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="password">
+                <td><input type="password" name="userEntity.password">
                 </td>
             </tr>
         </table>
