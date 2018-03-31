@@ -25,7 +25,7 @@ public class UserInterceptor extends AbstractInterceptor {
             Object obj=ac.getSession().get("userInfo");
             if(obj==null){
                 //没有登陆
-                return  "login";
+                return  "relogin";
             }else{
                 //当前用户已登陆
                 return invocation.invoke();//直接返回

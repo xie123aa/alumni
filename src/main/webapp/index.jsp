@@ -11,9 +11,10 @@
     <title>登陆成功</title>
 
 </head>
-<body>
-登陆成功
-欢迎您${sessionScope.userInfo.username}<br>
 
-</body>
+<frameset rows="72,*" frameborder="0" border="0" framespacing="0">
+    <frame src="top.action" name="topFrame" noresize="noresize" id="leftFrame" />
+    <frame src="main.action" name="mainFrame" id="mainFrame" />
+</frameset>
+<noframes><body></body></noframes>
 </html>

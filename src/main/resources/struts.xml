@@ -16,6 +16,8 @@
 
 	<!-- 通用package -->
 	<package name="customer" namespace="/" extends="struts-default">
+		<!--全局返回结果配置，主要处理拦截器返回结果为空的问题-->
+
 		<!--拦截器配置-->
 		<interceptors>
 		<interceptor name="loginCheck" class="george.xie.interceptor.UserInterceptor"></interceptor>
@@ -27,14 +29,40 @@
 	</interceptors>
 		<!--执行拦截器-->
 		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<global-results>
+			<result name="relogin">/login.jsp</result>
+		</global-results>
 
 		<action name="userAction" class="userAction" >
 
 		</action>
 		<!--用户登陆-->
-		<action name="loginAction" class="userAction" method="login">
+
+
+		<action name="login" class="userAction" method="login">
 			<result name="success">/index.jsp</result>
-			<result name="error">/login.jsp</result>
+
+
+		</action>
+		<!--导航栏-->
+		<action name="top">
+			<result name="success">/top.jsp</result>
+		</action>
+		<!--main返回操作-->
+		<action name="main">
+			<result name="success">/main.jsp</result>
+		</action>
+		<!--分类查看返回操作-->
+		<action name="left">
+			<result name="success">/left.jsp</result>
+		</action>
+		<!-- 显示图片内容-->
+		<action name="right">
+			<result name="success">/right.jsp</result>
+		</action>
+		<!-- 添加图片内容-->
+		<action name="add">
+			<result name="success">/post.jsp</result>
 		</action>
 
 	</package>

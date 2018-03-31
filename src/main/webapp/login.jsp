@@ -20,7 +20,7 @@
 
 <center>
     <h1 style="color:red">登录</h1>
-    <form id="indexform" name="indexForm" action="loginAction.action" method="post">
+    <form id="indexform" name="indexForm" action="login.action" method="post">
         <table border="0">
             <tr>
                 <td>账号：</td>

@@ -40,7 +40,7 @@ public class UserAction extends ActionSupport {
         UserEntity user = userService.login(userEntity);
         if (user == null) {
             this.addActionError("用户名或密码不正确");
-            return ERROR;
+            return "relogin";
         } else {
             session.put("userInfo", user);
             return SUCCESS;
