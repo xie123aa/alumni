@@ -53,4 +53,8 @@
         <!--注入sessionfactory-->
 		<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+	<!--配置Action对象    -->
+	<bean id="uploadAction" class="george.xie.atcion.UploadAction" scope="prototype"  >
+		<!--注入service-->
+	</bean>
 </beans>

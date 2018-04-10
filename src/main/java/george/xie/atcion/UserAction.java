@@ -36,12 +36,13 @@ public class UserAction extends ActionSupport {
      * @return
      */
     public String login() {
-        Map session = (Map) ActionContext.getContext().getSession();
+
         UserEntity user = userService.login(userEntity);
-        if (user == null) {
+        if (user == null||userEntity.getUsername()==null) {
             this.addActionError("用户名或密码不正确");
             return "relogin";
         } else {
+            Map session = (Map) ActionContext.getContext().getSession();
             session.put("userInfo", user);
             return SUCCESS;
         }

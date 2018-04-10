@@ -25,8 +25,7 @@
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="loginCheck"></interceptor-ref>
 			</interceptor-stack>
-			
-	</interceptors>
+	    </interceptors>
 		<!--执行拦截器-->
 		<default-interceptor-ref name="myStack"></default-interceptor-ref>
 		<global-results>
@@ -60,9 +59,10 @@
 		<action name="right">
 			<result name="success">/right.jsp</result>
 		</action>
-		<!-- 添加图片内容-->
-		<action name="add">
-			<result name="success">/post.jsp</result>
+		<!--上传图片-->
+		<action name="uploadpic" class="george.xie.atcion.UploadAction" method="upload">
+
+			<result name="input">/error.jsp</result>
 		</action>
 
 	</package>

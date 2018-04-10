@@ -14,7 +14,7 @@
 <body>
 <div id="nav">
     <a href="${pageContext.request.contextPath }/" >首页</a>
-    <a href="${pageContext.request.contextPath }/top.atcion" >发布</a>
+    <a href="${pageContext.request.contextPath }/post.jsp"  target="mainFrame">发布</a>
     <a href="${pageContext.request.contextPath }/">管理</a>
     登陆成功
     欢迎您${sessionScope.userInfo.username}
