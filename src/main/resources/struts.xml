@@ -61,7 +61,7 @@
 		</action>
 		<!--上传图片-->
 		<action name="uploadpic" class="george.xie.atcion.UploadAction" method="upload">
-
+			<result name="success">/test.jsp</result>
 			<result name="input">/error.jsp</result>
 		</action>
 

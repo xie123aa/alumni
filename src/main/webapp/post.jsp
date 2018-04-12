@@ -7,7 +7,7 @@
   发布图片
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="/head.jsp" %>
+<%@ include file="head.jsp" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>babasport-add</title>
@@ -16,20 +16,21 @@
         function uploadPic(){
             //定义参数
             var options = {
-                url : "/uploadpic.action",
+                url : "${pageContext.request.contextPath}/uploadpic.action",
                 dataType : "json",
                 type :  "post",
                 success : function(data){
                     //回调 二个路径
                     //url
                     //path
-                    $("#allImgUrl").attr("src",data.url);
-                    $("#path").val(data.path);
+
                 }
+
             };
 
             //jquery.form使用方式
             $("#jvForm").ajaxSubmit(options);
+            alert("Welcome ");
 
         }
     </script>

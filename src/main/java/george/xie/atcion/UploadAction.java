@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+
 import java.io.File;
 import java.io.IOException;
 
@@ -11,18 +12,21 @@ public class UploadAction extends ActionSupport {
 // 对应表单：<input type="file" name="file1">
 private File pic;
 // 文件名
-private String file1FileName;
+private String picFileName;
 // 文件的类型(MIME)
-private String file1ContentType;
-public void setFile1(File pic) {
+private String picContentType;
+public void setPic(File pic) {
         this.pic= pic;
         }
-    public void setFile1FileName(String file1FileName) {
-        this.file1FileName = file1FileName;
+    public void setPicFileName(String picFileName) {
+        this.picFileName = picFileName;
         }
-    public void setFile1ContentType(String file1ContentType) {
-        this.file1ContentType = file1ContentType;
+    public void setPicContentType(String picContentType) {
+        this.picContentType =picContentType;
         }
+
+
+
     public String upload() throws Exception{
     System.out.println("upload()..........");
         /******拿到上传的文件，进行处理******/
@@ -33,7 +37,7 @@ public void setFile1(File pic) {
         String path = ServletActionContext.getServletContext().getRealPath("/upload");
 
         // 创建目标文件对象，将获取的文件放在当前目录
-        File destFile = new File(path,file1FileName);//这仅仅是一个驱壳，需要将临时文件（files）导入
+        File destFile = new File(path,picFileName);//这仅仅是一个驱壳，需要将临时文件（files）导入
 
         // 把上传的文件，拷贝到目标文件中
 
