@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="alumni" target="1.5" />
+      <module name="jersey" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
