@@ -78,6 +78,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.2" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.17.1" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.17.1" />
+          <element id="library" level="project" name="Maven: org.json:json:20160810" />
         </element>
       </element>
       <element id="directory" name="META-INF">
