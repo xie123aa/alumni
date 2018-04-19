@@ -1,7 +1,6 @@
 package george.xie.dao;
 
 import george.xie.entity.UserEntity;
-import george.xie.entity.UserEntity_;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import java.util.List;
@@ -35,4 +34,5 @@ public class UserDaoImpl implements UserDao{
            return null;
        }
     }
+
 }

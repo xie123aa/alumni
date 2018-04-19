@@ -39,7 +39,11 @@
 </head>
 <body>
 <%-- action被覆盖--%>
-<form id="jvForm" action="" method="post" enctype="multipart/form-data">
+<form id="jvForm" action="add.action" method="post" enctype="multipart/form-data">
+    <input type="text" name="content.title"/>
+    <br>
+    <input type="text" name="description"/>
+    <br>
     <td>上传商品图片(90x150尺寸):</td>
     <td width="80%" class="pn-fcontent">
         注:该尺寸图片必须为90x150。
@@ -49,7 +53,7 @@
         <td width="20%" class="pn-flabel pn-flabel-h"></td>
         <td width="80%" class="pn-fcontent">
             <img width="100" height="100" id="allImgUrl"/>
-            <input type="hidden" name="imgUrl" id="path"/>
+            <input type="hidden" name="imgurl" id="path"/>
             <input type="file" onchange="uploadPic()" name="pic"/>
             <input type="submit" class="submit" value="提交"/> &nbsp; <input type="reset" class="reset" value="重置"/>
         </td>

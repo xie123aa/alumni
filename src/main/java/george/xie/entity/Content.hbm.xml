@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="george.xie.entity.Content" table="content" schema="alumni">
+        <id name="id" column="id"/>
+        <property name="creatTime" column="creat_time"/>
+        <property name="imgurl" column="imgurl"/>
+        <property name="description" column="description"/>
+        <property name="title" column="title"/>
+        <property name="totalComment" column="total_comment"/>
+        <property name="finalComments" column="final_comments"/>
+        <property name="clickCount" column="click_count"/>
+        <many-to-one name="userEntity" class="george.xie.entity.UserEntity" fetch="select" lazy="false">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

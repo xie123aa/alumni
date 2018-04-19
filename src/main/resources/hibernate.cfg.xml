@@ -22,6 +22,9 @@
 		<!-- 加载映射文件 -->
 		<mapping class="george.xie.entity.UserEntity"/>
 		<mapping resource="george/xie/entity/UserEntity.hbm.xml"/>
+		<mapping class="george.xie.entity.Content"/>
+		<mapping resource="george/xie/entity/Content.hbm.xml"/>
+
 
 	</session-factory>
 </hibernate-configuration>

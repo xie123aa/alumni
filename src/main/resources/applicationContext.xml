@@ -37,14 +37,27 @@
         <!--注入service-->
         <property name="userService" ref="userService"></property>
     </bean>
+	<bean id="contentAction" class="george.xie.atcion.ContentAction" scope="prototype"  >
+		<!--注入service-->
+		<property name="contentService" ref="contentService"></property>
+	</bean>
 
 	<!--配置Service对象    -->
 	<bean id="userService" class="george.xie.service.UserService">
         <!--注入Dao 接口等于实现类对象-->
         <property name="userDao" ref="userDaoImpl"></property>
     </bean>
+	<bean id="contentService" class="george.xie.service.ContentService">
+		<!--注入Dao 接口等于实现类对象-->
+		<property name="contentDaoImp" ref="contentDaoImpl"></property>
+	</bean>
+
     <!--创建实现类对象，创建接口注入实现类-->
     <bean id="userDaoImpl" class="george.xie.dao.UserDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<!--创建实现类对象，创建接口注入实现类-->
+	<bean id="contentDaoImpl" class="george.xie.dao.ContentDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 

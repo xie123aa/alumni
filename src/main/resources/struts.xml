@@ -63,6 +63,10 @@
 		<action name="uploadpic" class="george.xie.atcion.UploadAction" method="upload">
 
 		</action>
+		<!--添加内容-->
+		<action name="add" class="george.xie.atcion.ContentAction" >
+
+		</action>
 
 	</package>
 </struts>
