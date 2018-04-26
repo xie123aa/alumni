@@ -59,6 +59,11 @@
 	<!--创建实现类对象，创建接口注入实现类-->
 	<bean id="contentDaoImpl" class="george.xie.dao.ContentDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateCallBackCutePageImpl" ref="PageHibernateCallback"></property>
+	</bean>
+	<!--分页查询回调-->
+	<bean id="PageHibernateCallback" class="george.xie.dao.PageHibernateCallback">
+
 	</bean>
 
     <!--创建hibernatetemplate模板对象-->

@@ -73,7 +73,14 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="26" parent="14" name="publish">
+    <foreign-key id="26" parent="14" name="FKajxu4nty8agxhm29y31wxmvot">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>alumni</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>uid</RefColNames>
+    </foreign-key>
+    <foreign-key id="27" parent="14" name="publish">
       <ColNames>user_id</ColNames>
       <RefSchemaName>alumni</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -82,21 +89,21 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="27" parent="15" name="uid">
+    <column id="28" parent="15" name="uid">
       <Position>1</Position>
       <DataType>INT(10)|4</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="28" parent="15" name="username">
+    <column id="29" parent="15" name="username">
       <Position>2</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <column id="29" parent="15" name="password">
+    <column id="30" parent="15" name="password">
       <Position>3</Position>
       <DataType>VARCHAR(255)|12</DataType>
     </column>
-    <key id="30" parent="15" name="PRIMARY">
+    <key id="31" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid</ColNames>
       <Primary>1</Primary>

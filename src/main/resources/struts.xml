@@ -5,6 +5,7 @@
 
 <struts>
 	<!-- 配置常量 -->
+	<constant name="struts.multipart.maxSize" value="10485760"/>
 	<!-- 字符集 -->
 	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
 	<!-- 开发模式 -->
@@ -56,15 +57,24 @@
 			<result name="success">/left.jsp</result>
 		</action>
 		<!-- 显示图片内容-->
-		<action name="right">
+		<action name="showAll" class="george.xie.atcion.ContentAction" method="showAll">
 			<result name="success">/right.jsp</result>
 		</action>
 		<!--上传图片-->
 		<action name="uploadpic" class="george.xie.atcion.UploadAction" method="upload">
+			<interceptor-ref name="fileUpload">
+					<!-- 设置文件上传大小 -->
+					<param name="maximumSize">5242880</param>
+			</interceptor-ref>
+	 			 <!-- 设置文件上传类型 >
+     <!-自定义了拦截器后必手动定义默认的拦截器，否则默认的拦截器不会被执行 -->
+		 <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input">/error.jsp</result>
 
 		</action>
 		<!--添加内容-->
 		<action name="add" class="george.xie.atcion.ContentAction" >
+			<result name="success">/right.jsp</result>
 
 		</action>
 

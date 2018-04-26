@@ -3,6 +3,9 @@ package george.xie.atcion;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+import george.xie.utils.ImagUtil;
+import net.coobird.thumbnailator.Thumbnails;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONObject;
 
@@ -50,11 +53,29 @@ public String upload() throws Exception{
              }
     String fileEx = picFileName.substring(picFileName.indexOf("."),
             picFileName.length());
-    String path = "upload/" + format + fileEx;
-        String url="http://localhost:8088/web-image/"+path;
+    String path = format + fileEx;
+        String url="http://localhost:8088/web-image/upload/"+path;
         WebResource resource=cilent.resource(url);
 
         resource.put(String.class,pic);
+//生成缩略图并发送到服务器
+
+    // 获取上传的目录路径，以目录作为一个对象
+
+    String imgPath = ServletActionContext.getServletContext().getRealPath("/upload");
+
+// 创建目标文件对象，将获取的文件放在当前目录
+    File destFile = new File(imgPath,picFileName);//这仅仅是一个驱壳，需要将临时文件（files）导入
+
+// 把上传的文件，拷贝到目标文件中
+
+    try {
+        FileUtils.copyFile(pic, destFile);
+        destFile.renameTo(new File(imgPath+"/"+format+fileEx));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    System.out.println(destFile.getName());
     JSONObject js=new JSONObject();
     js.put("url",url);
     js.put("path",path);
@@ -65,6 +86,7 @@ public String upload() throws Exception{
         return null;
 
     }
+
 
 
 }
