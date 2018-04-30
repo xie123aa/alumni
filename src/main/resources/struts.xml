@@ -74,7 +74,12 @@
 		</action>
 		<!--添加内容-->
 		<action name="add" class="george.xie.atcion.ContentAction" >
-			<result name="success">/right.jsp</result>
+			<result name="publish" type="chain">main</result>
+
+		</action>
+		<!--展示内容-->
+		<action name="showPic" class="george.xie.atcion.ContentAction" method="showSingle">
+			<result name="showsingle">/content.jsp</result>
 
 		</action>
 

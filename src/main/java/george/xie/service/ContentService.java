@@ -30,5 +30,9 @@ public class ContentService {
         page.setList(contentDaoImp.queryByPage(pageNum,pageSize));
         return page;
     }
+    public Content getContentByID(int id){
+        return contentDaoImp.getContentByID(id);
+
+    }
 
 }

@@ -9,5 +9,6 @@ public interface ContentDao {
     public List<Content> queryByPage(int pageNum, int pagesize);
     public List<Content>queryRencently();
     public int queryTotal();
+    public Content getContentByID(int id);
 
 }

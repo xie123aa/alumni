@@ -30,16 +30,21 @@ public class ContentAction extends ActionSupport {
     public void setContent(Content content) {
         this.content = content;
     }
+    private ActionContext context = ActionContext.getContext();
+    private HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
 
+    /**
+     * 保存图片内容
+     * @return
+     * @throws Exception
+     */
     @Override
     public String execute() throws Exception {
-        Map session = (Map) ActionContext.getContext().getSession();
+        Map session = (Map) context.getSession();
         UserEntity user= (UserEntity) session.get("userInfo");
         HttpServletRequest request = ServletActionContext.getRequest();
         String url=request.getParameter("imgurl");
-        System.out.println(url);
         String description=request.getParameter("description");
-        System.out.println(description);
         content.setUserEntity(user);
         content.setDescription(description);
         content.setImgurl("upload/" +url);
@@ -55,8 +60,13 @@ public class ContentAction extends ActionSupport {
         resource.put(String.class,imgFile);
         //发送缩略图
         setThumbnail(url,imgFile);
-        return null;
+        return "publish";
     }
+
+    /**
+     * 展示所有图片
+     * @return
+     */
     public String showAll(){
         int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
         int pageNum=1;//当前页面的页数
@@ -82,7 +92,7 @@ public class ContentAction extends ActionSupport {
     }
 
     /**
-     * 发送缩略图
+     * 发送缩略图方法
      * @param name
      * @param file
      */
@@ -113,4 +123,19 @@ public class ContentAction extends ActionSupport {
 
 //在驱壳中填充灵魂
     }
+    public String manage(){
+        return "manage";
+    }
+    /**
+     *
+     */
+    public String showSingle(){
+        int id=Integer.parseInt(request.getParameter("id"));
+        Content content=contentService.getContentByID(id);
+        request.setAttribute("content",content);
+
+
+        return "showsingle";
+    }
+
 }

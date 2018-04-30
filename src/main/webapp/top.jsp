@@ -7,18 +7,19 @@
   导航栏
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="head.jsp" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<div id="nav">
-    <a href="${pageContext.request.contextPath }/" >首页</a>
-    <a href="${pageContext.request.contextPath }/post.jsp"  target="mainFrame">发布</a>
-    <a href="${pageContext.request.contextPath }/">管理</a>
+
     登陆成功
     欢迎您${sessionScope.userInfo.username}
-
-</div>
+<ul class="nav nav-pills">
+    <li class="active"><a href="${pageContext.request.contextPath }/index.jsp" target="_parent">首页</a></li>
+    <li><a href="${pageContext.request.contextPath }/post.jsp" target="mainFrame">发布</a></li>
+    <li><a href="${pageContext.request.contextPath }/manage.jsp" target="mainFrame">管理</a></li>
+</ul>
 </body>
 </html>

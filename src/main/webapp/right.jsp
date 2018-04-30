@@ -8,6 +8,7 @@
 --%>
 <%-- 这个是用来显示主页面的，图片等信息--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="head.jsp" %>
 <html>
 <head>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,8 +20,8 @@
 <body>
 显示内容的
 <div id="content">
-    <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="10">
-        <img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded">
+    <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="10" varStatus="loop">
+       <a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded"/></a>
         <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <br>
     </c:forEach>

@@ -46,4 +46,8 @@ public class ContentDaoImpl implements ContentDao{
         List<Content> list= (List<Content>) hibernateTemplate.find("from Content art order by art.creatTime desc");
         return list.size();
     }
+
+    public Content getContentByID(int id) {
+        return hibernateTemplate.get(Content.class,id);
+    }
 }
