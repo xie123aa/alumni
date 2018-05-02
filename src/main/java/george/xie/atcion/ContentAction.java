@@ -4,8 +4,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+import george.xie.entity.Comment;
 import george.xie.entity.Content;
 import george.xie.entity.UserEntity;
+import george.xie.service.CommentService;
 import george.xie.service.ContentService;
 import george.xie.utils.Page;
 import net.coobird.thumbnailator.Thumbnails;
@@ -22,6 +24,11 @@ import java.util.Map;
 public class ContentAction extends ActionSupport {
     private Content content=new Content();
     private ContentService contentService;
+    private CommentService commentService;
+
+    public void setCommentService(CommentService commentService) {
+        this.commentService = commentService;
+    }
 
     public void setContentService(ContentService contentService) {
         this.contentService = contentService;
@@ -126,14 +133,26 @@ public class ContentAction extends ActionSupport {
     public String manage(){
         return "manage";
     }
+
     /**
-     *
+     * 展示单个文章和评论
+     * @return
      */
     public String showSingle(){
+
         int id=Integer.parseInt(request.getParameter("id"));
+        if(request.getParameter("click")!=null){//用户点击加一，用cilck参数区分是否是点击
+            contentService.addClick(id);
+        }
         Content content=contentService.getContentByID(id);
         request.setAttribute("content",content);
-
+        int pageNum=1;
+        if(request.getParameter("pageNum")!=null){
+            pageNum=Integer.parseInt(request.getParameter("pageNum"));
+        }
+        int pageSize=10;
+        Page<Comment> list=commentService.getComments(pageNum,pageSize,id);
+        request.setAttribute("page",list);
 
         return "showsingle";
     }

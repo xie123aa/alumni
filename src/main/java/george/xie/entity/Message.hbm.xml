@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="george.xie.entity.Message" table="message" schema="alumni">
+        <id name="id" column="id"/>
+        <property name="creattime" column="creattime"/>
+        <property name="look" column="look"/>
+        <many-to-one name="userEntity" class="george.xie.entity.UserEntity" fetch="select" lazy="false">
+            <column name="from_uid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="content" class="george.xie.entity.Content" fetch="select" lazy="false">
+            <column name="content_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cuid" class="george.xie.entity.UserEntity" fetch="select" lazy="false">
+            <column name="content_uid" not-null="false" />
+        </many-to-one>
+        <many-to-one name="comment" class="george.xie.entity.Comment" fetch="select" lazy="false">
+            <column name="comment_id" not-null="false" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

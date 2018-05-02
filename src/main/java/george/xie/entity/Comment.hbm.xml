@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="george.xie.entity.Comment" table="comment" schema="alumni">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="content" column="content"/>
+        <property name="creatTime" column="creat_time"/>
+        <many-to-one name="userEntity" class="george.xie.entity.UserEntity" fetch="select" lazy="false">
+            <column name="from_uid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="content1" class="george.xie.entity.Content" fetch="select" lazy="false">
+            <column name="topic_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userEntity2" class="george.xie.entity.UserEntity" fetch="select" lazy="false">
+            <column name="to_uid" not-null="false" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

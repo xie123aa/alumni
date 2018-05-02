@@ -40,6 +40,7 @@
 	<bean id="contentAction" class="george.xie.atcion.ContentAction" scope="prototype"  >
 		<!--注入service-->
 		<property name="contentService" ref="contentService"></property>
+		<property name="commentService" ref="commentService"></property>
 	</bean>
 
 	<!--配置Service对象    -->
@@ -50,6 +51,15 @@
 	<bean id="contentService" class="george.xie.service.ContentService">
 		<!--注入Dao 接口等于实现类对象-->
 		<property name="contentDaoImp" ref="contentDaoImpl"></property>
+	</bean>
+	<bean id="commentService" class="george.xie.service.CommentService">
+		<!--注入Dao 接口等于实现类对象-->
+		<property name="commentDao" ref="commentDaoImpl"></property>
+		<property name="contentDao" ref="contentDaoImpl"></property>
+	</bean>
+	<bean id="messageService" class="george.xie.service.MessageService">
+		<!--注入Dao 接口等于实现类对象-->
+		<property name="messageDao" ref="messageDaoImpl"></property>
 	</bean>
 
     <!--创建实现类对象，创建接口注入实现类-->
@@ -75,4 +85,37 @@
 	<bean id="uploadAction" class="george.xie.atcion.UploadAction" scope="prototype"  >
 		<!--注入service-->
 	</bean>
+	<bean id="commentDaoImpl" class="george.xie.dao.CommentDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateCallBackCutePageImpl" ref="PageHibernateCallback"></property>
+
+	</bean>
+
+	<!--配置Action对象    -->
+	<bean id="commentAction" class="george.xie.atcion.CommentAction" scope="prototype"  >
+		<!--注入service-->
+		<property name="commentService" ref="commentService"></property>
+		<property name="contentService" ref="contentService"></property>
+		<property name="messageService" ref="messageService"></property>
+
+	</bean>
+	<!--配置Action对象    -->
+	<bean id="managetAction" class="george.xie.atcion.ManagAction" scope="prototype"  >
+		<!--注入service-->
+		<property name="commentService" ref="commentService"></property>
+		<property name="contentService" ref="contentService"></property>
+	</bean>
+
+	<bean id="messageDaoImpl" class="george.xie.dao.MessageDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+
+
+	</bean>
+	<!--配置Action对象    -->
+	<bean id="messageAction" class="george.xie.atcion.MessageAction" scope="prototype"  >
+		<!--注入service-->
+		<property name="messageService" ref="messageService"></property>
+
+	</bean>
+
 </beans>

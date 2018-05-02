@@ -34,5 +34,29 @@ public class ContentService {
         return contentDaoImp.getContentByID(id);
 
     }
+    /**
+     * 更新content，cilck加一
+     * @param id
+     */
+
+    public void addClick( int id ){
+        contentDaoImp.updateContent(id);
+    }
+     public  List<Content> getAllContentByID(int id) {
+        return contentDaoImp.getAllContentByUID(id);
+    }
+    /**
+     * 删除评论
+     * @param id
+     */
+    public void delete(int id ){
+        contentDaoImp.delete(id);
+    }
+    public Page<Content> getAllcontentByUid(int uid,int pageNum,int pageSize ){
+        Page page=new Page(pageNum,pageSize,contentDaoImp.getAllContentByUID(uid).size());
+        page.setList(contentDaoImp.getAllContentByUid(uid,pageNum,pageSize));
+        return page;
+    }
+
 
 }

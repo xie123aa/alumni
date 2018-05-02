@@ -12,7 +12,7 @@
 
 </head>
 
-<frameset rows="72,*" frameborder="0" border="0" framespacing="0">
+<frameset rows="150,*" frameborder="0" border="0" framespacing="0">
     <frame src="top.action" name="topFrame" noresize="noresize" id="leftFrame" />
     <frame src="main.action" name="mainFrame" id="mainFrame" />
 </frameset>

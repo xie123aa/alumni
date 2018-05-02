@@ -19,13 +19,17 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
 
-		<!-- 加载映射文件 -->
+        <!-- 加载映射文件 -->
 		<mapping class="george.xie.entity.UserEntity"/>
 		<mapping resource="george/xie/entity/UserEntity.hbm.xml"/>
 		<mapping class="george.xie.entity.Content"/>
 		<mapping resource="george/xie/entity/Content.hbm.xml"/>
+        <mapping class="george.xie.entity.Comment"/>
+        <mapping resource="george/xie/entity/Comment.hbm.xml"/>
+        <mapping resource="george/xie/entity/Message.hbm.xml"/>
+        <mapping class="george.xie.entity.Message"/>
 
 
-	</session-factory>
+    </session-factory>
 </hibernate-configuration>
 

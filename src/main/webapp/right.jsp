@@ -20,8 +20,8 @@
 <body>
 显示内容的
 <div id="content">
-    <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="10" varStatus="loop">
-       <a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded"/></a>
+    <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="5" varStatus="loop">
+       <a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded"/></a>
         <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <br>
     </c:forEach>
