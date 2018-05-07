@@ -13,11 +13,8 @@ public class UserDaoImpl implements UserDao{
         this.hibernateTemplate = hibernateTemplate;
     }
 //添加操作
-    public void add() {
+    public void add(UserEntity user) {
         //调用sava方法
-        UserEntity user=new UserEntity();
-        user.setUsername("xie123aa");
-        user.setPassword("6863559");
          hibernateTemplate.save(user);
 
     }

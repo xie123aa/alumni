@@ -96,6 +96,28 @@
 		<action name="message" class="george.xie.atcion.MessageAction"  >
 			<result name="success">/message.jsp</result>
 		</action>
+		<!--删除文章-->
+		<action name="deleteContent" class="george.xie.atcion.ManagAction"  method="deleteContent">
+			<result name="deleteContent">/manage_content.jsp</result>
+		</action>
+		<!--删除评论-->
+		<action name="deleteComment" class="george.xie.atcion.ManagAction"  method="deleteComment">
+			<result name="deleteContent">/manage_comment.jsp</result>
+		</action>
+		<!--注销-->
+		<action name="logout" class="george.xie.atcion.UserAction"  method="logout">
+			<result name="logout">/login.jsp</result>
+		</action>
+		<!--注册-->
+		<action name="register" class="george.xie.atcion.UserAction" method="register">
+			<result name="success">/login.jsp</result>
+		</action>
+		<action name="showbycomment" class="george.xie.atcion.ContentAction" method="showAllByComment">
+			<result name="showAllByComment">/right_comment.jsp</result>
+		</action>
+		<action name="showbyclick" class="george.xie.atcion.ContentAction" method="showAllByCilck">
+			<result name="showAllByCilck">/right_click.jsp</result>
+		</action>
 
 
 	</package>

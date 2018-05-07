@@ -42,7 +42,12 @@ private ContentDaoImpl contentDao;
         comment.setContent1(contentDao.getContentByID(topicId));
         Timestamp d = new Timestamp(System.currentTimeMillis());
         comment.setCreatTime(d);
-       return commentDao.save(comment);
+       Comment comment2=commentDao.save(comment);
+      Content content1=comment2.getContent1();
+      content1.setTotalComment(content1.getTotalComment()+1);
+      content1.setFinalComments(d);//设置最后回复时间
+      contentDao.updateContent(content1.getId());
+       return comment2;
 
     }
 

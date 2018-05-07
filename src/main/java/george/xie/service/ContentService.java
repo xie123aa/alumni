@@ -42,6 +42,7 @@ public class ContentService {
     public void addClick( int id ){
         contentDaoImp.updateContent(id);
     }
+
      public  List<Content> getAllContentByID(int id) {
         return contentDaoImp.getAllContentByUID(id);
     }
@@ -57,6 +58,17 @@ public class ContentService {
         page.setList(contentDaoImp.getAllContentByUid(uid,pageNum,pageSize));
         return page;
     }
+    public Page<Content> getContentsByComment(int pageNum, int pageSize){
 
+        Page page=new Page(pageNum,pageSize,contentDaoImp.queryTotal());
+        page.setList(contentDaoImp.queryByPageComment(pageNum,pageSize));
+        return page;
+    }
+    public Page<Content> getContentsByClick(int pageNum, int pageSize){
+
+        Page page=new Page(pageNum,pageSize,contentDaoImp.queryTotal());
+        page.setList(contentDaoImp.queryByPageCilck(pageNum,pageSize));
+        return page;
+    }
 
 }

@@ -4,7 +4,7 @@ import george.xie.entity.UserEntity;
 
 
 public interface UserDao {
-    public void add();
+    public void add(UserEntity userEntity);
 
     /**
      * 登陆验证

@@ -8,6 +8,16 @@ public class UserEntity {
     private int uid;
     private String username;
     private String password;
+    private String name;
+    @Id
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Id
     @Column(name = "uid")

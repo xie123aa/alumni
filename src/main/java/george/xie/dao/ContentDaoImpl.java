@@ -84,5 +84,27 @@ public class ContentDaoImpl implements ContentDao{
         return results;
     }
 
+    public List<Content> queryByPageComment(int pageNum, int pagesize) {
+        String hql="from Content art order by art.totalComment desc";
+        pageNum=(pageNum-1)*pagesize;
+        hibernateCallBackCutePageImpl.init(hql, pageNum, pagesize);//该回调类对象已经通过Spring注入到当前测试类里面了。
+        List<Content> results= (List<Content>) hibernateTemplate.execute(hibernateCallBackCutePageImpl);
+
+        return results;
+    }
+
+    public List<Content> queryByPageCilck(int pageNum, int pagesize) {
+        String hql="from Content art order by art.clickCount desc";
+        pageNum=(pageNum-1)*pagesize;
+        hibernateCallBackCutePageImpl.init(hql, pageNum, pagesize);//该回调类对象已经通过Spring注入到当前测试类里面了。
+        List<Content> results= (List<Content>) hibernateTemplate.execute(hibernateCallBackCutePageImpl);
+
+        return results;
+    }
+    public void update(Content content){
+        hibernateTemplate.update(content);
+
+    }
+
 
 }

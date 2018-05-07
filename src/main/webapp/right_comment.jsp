@@ -23,8 +23,8 @@
     <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="5" varStatus="loop">
        <a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded"/></a>
         <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+       点击数 ${requestScope.page.list[loop.count-1].clickCount}评论数${requestScope.page.list[loop.count-1].totalComment}
         <br>
-        点击数 ${requestScope.page.list[loop.count-1].clickCount}评论数${requestScope.page.list[loop.count-1].totalComment}
     </c:forEach>
 </div>
 <!--翻页时进行判断jsp标准标签库	 -->
@@ -38,39 +38,39 @@
                 <li class="disabled"><a href="#">${i}</a></li>
             </c:if>
             <c:if test="${requestScope.page.pageNum != i}">
-                <li><a href="showAll.action?pageNum=${i}">${i}</a></li>
+                <li><a href="showbycomment.action?pageNum=${i}">${i}</a></li>
             </c:if>
         </c:forEach>
-        <li><a href="showAll.action?pageNum=${requestScope.page.pageNum+1}">&raquo;</a></li>
+        <li><a href="showbycomment.action?pageNum=${requestScope.page.pageNum+1}">&raquo;</a></li>
     </ul>
 </c:if>
 <%--如果当前页不是第一页也不是最后一页，则有上一页和下一页这个超链接显示 --%>
 <c:if test="${requestScope.page.pageNum > 1 && requestScope.page.pageNum < requestScope.page.totalPage}">
     <ul class="pagination">
-        <li ><a href="showAll.action?pageNum=${requestScope.page.pageNum-1}">&laquo;</a></li>
+        <li ><a href="showbycomment.action?pageNum=${requestScope.page.pageNum-1}">&laquo;</a></li>
 
         <c:forEach begin="${requestScope.page.start}" end="${requestScope.page.end}" step="1" var="i">
             <c:if test="${requestScope.page.pageNum == i}">
                 <li class="disabled"><a href="#">${i}</a></li>
             </c:if>
             <c:if test="${requestScope.page.pageNum != i}">
-                <li><a href="showAll.action?pageNum=${i}">${i}</a></li>
+                <li><a href="showbycomment.action?pageNum=${i}">${i}</a></li>
             </c:if>
         </c:forEach>
-        <li><a href="showAll.action?pageNum=${requestScope.page.pageNum+1}">&raquo;</a></li>
+        <li><a href="showbycomment.action?pageNum=${requestScope.page.pageNum+1}">&raquo;</a></li>
     </ul>
 </c:if>
 <%-- 如果当前页是最后一页，则只有上一页这个超链接显示，下一页没有 --%>
 <c:if test="${requestScope.page.pageNum == requestScope.page.totalPage}">
     <ul class="pagination">
-        <li><a href="showAll.action?pageNum=${requestScope.page.pageNum-1}">&laquo;</a></li>
+        <li><a href="showbycomment.action?pageNum=${requestScope.page.pageNum-1}">&laquo;</a></li>
 
         <c:forEach begin="${requestScope.page.start}" end="${requestScope.page.end}" step="1" var="i">
             <c:if test="${requestScope.page.pageNum == i}">
                 <li class="disabled"><a href="#">${i}</a></li>
             </c:if>
             <c:if test="${requestScope.page.pageNum != i}">
-                <li><a href="showAll.action?pageNum=${i}">${i}</a></li>
+                <li><a href="showbycomment.action?pageNum=${i}">${i}</a></li>
             </c:if>
         </c:forEach>
         <li class="disabled"><a href="#">&raquo;</a></li>

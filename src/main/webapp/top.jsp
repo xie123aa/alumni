@@ -29,6 +29,7 @@
         </ul>
     </li>
     <li><a href="${pageContext.request.contextPath }/message.action" target="mainFrame">通知</a></li>
+    <li><a href="${pageContext.request.contextPath }/logout.action"target="_parent" >注销</a></li>
 </ul>
 </body>
 </html>

@@ -11,6 +11,7 @@ import george.xie.utils.Page;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,9 @@ public class ManagAction extends ActionSupport {
         }
         Page<Comment> page=commentService.getAllcommentByUid(user.getUid(),pageNum,pageSize);
         request.setAttribute("page",page);
+        System.out.println(page.getPageNum());
+        System.out.println(page.getTotalPage());
+        System.out.println("***************************");
 
         return SUCCESS;
     }
@@ -63,6 +67,14 @@ public class ManagAction extends ActionSupport {
         }
         Page<Content> page=contentService.getAllcontentByUid(user.getUid(),pageNum,pageSize);
         request.setAttribute("page",page);
+        List url=new ArrayList();
+        for(Content content : page.getList()) {
+            String name=content.getImgurl();
+            String fileName=name.substring(0,name.lastIndexOf("."));
+            url.add(fileName);
+
+        }
+        page.setUrlList(url);
 
         return "contentMange";
     }

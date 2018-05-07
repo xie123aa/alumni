@@ -22,14 +22,14 @@ public class test extends AbstractJUnit4SpringContextTests {
          */
         @Test
         public void testGetSysRoleByUserId() {
-//                List<Content> list=contentService.getAllContentByID(1);
-//                Page<Content> list=contentService.getContents(1,5);
+//                List<Content> list=contentService.getContentsByComment(1,5);
+//                Page<Content> list=contentService.getContentsByComment(1,5);
 //                for(Content content : list) {
 //                        System.out.println(content.getTitle());
 //                }
 //            System.out.println(list);
 //                System.out.println("dadada");
-                contentService.delete(1);
+//                contentService.delete(1);
 
 //                Content content=contentService.getContentByID(21);
 //                System.out.println(content.getImgurl());

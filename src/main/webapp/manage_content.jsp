@@ -11,12 +11,31 @@
 <head>
     <title>Title</title>
 </head>
+
 <body>
-<c:forEach  items="${requestScope.page.list}" var="i" begin="0" end="20" varStatus="loop">
-    ${i.title}
-    <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-    <br>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="20" varStatus="loop">
+   <div "input${i.id}"+code>
+
+           ${requestScope.page.list[loop.count-1].title}&nbsp;;&nbsp;<img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" height="50" width="50"/>
+               <input id="input"  class="shanchu" type="button" value="删除"   code="${requestScope.page.list[loop.count-1].id}"/>
+   </div>
 </c:forEach>
+<script type="text/javascript">
+    var domain = "${pageContext.request.contextPath}";
+    var code;
+
+    $(".shanchu").click(function(){  //找到删除按钮，对其添加单击事件，单击之后执行事件
+        var code = $(this).attr("code");   //找到属性值
+        $.post(domain+"/deleteContent.action?id="+code,function (data) {
+            alert("删除成功");
+            $('#input'+code).fadeOut("slow");
+        });
+    })
+
+</script>
 <!--翻页时进行判断jsp标准标签库	 -->
 <%--如果当前页为第一页时且不是最后一页，就没有上一页这个超链接显示 ，有下一页显示--%>
 <c:if test="${requestScope.page.pageNum ==1&&$requestScope.page.pageNum != requestScope.page.totalPage&&requestScope.page.totalPage!=0}">

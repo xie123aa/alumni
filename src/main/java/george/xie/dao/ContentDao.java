@@ -15,5 +15,8 @@ public interface ContentDao {
     public List<Content> getAllContentByUID(int id);
     public  void delete (int id );
     public List<Content> getAllContentByUid(int uid ,int pageNum,int Pagesize );
+    public List<Content> queryByPageComment(int pageNum, int pagesize);
+    public List<Content> queryByPageCilck(int pageNum, int pagesize);
+    public void update(Content content);
 
 }

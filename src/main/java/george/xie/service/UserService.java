@@ -13,9 +13,9 @@ public class UserService {
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
-    public void add(){
+    public void add(UserEntity userEntity){
         System.out.println("service*******");
-        userDao.add();
+        userDao.add(userEntity);
     }
     /**
      * 登陆检测

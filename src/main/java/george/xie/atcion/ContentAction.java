@@ -156,5 +156,52 @@ public class ContentAction extends ActionSupport {
 
         return "showsingle";
     }
+    public String showAllByComment(){
+        int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
+        int pageNum=1;//当前页面的页数
+        ActionContext context = ActionContext.getContext();
+        HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+        if(request.getParameter("pageNum")!=null){
+            pageNum=Integer.parseInt(request.getParameter("pageNum"));
+        }
+        Page<Content> page=contentService.getContentsByComment(pageNum,pageSize);
+
+        List url=new ArrayList();
+        for(Content content : page.getList()) {
+            String name=content.getImgurl();
+            String fileName=name.substring(0,name.lastIndexOf("."));
+            url.add(fileName);
+
+        }
+        page.setUrlList(url);
+        request.setAttribute("page", page);
+
+
+        return "showAllByComment" ;
+    }
+
+    public String showAllByCilck(){
+        int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
+        int pageNum=1;//当前页面的页数
+        ActionContext context = ActionContext.getContext();
+        HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
+        if(request.getParameter("pageNum")!=null){
+            pageNum=Integer.parseInt(request.getParameter("pageNum"));
+        }
+        Page<Content> page=contentService.getContentsByClick(pageNum,pageSize);
+
+        List url=new ArrayList();
+        for(Content content : page.getList()) {
+            String name=content.getImgurl();
+            String fileName=name.substring(0,name.lastIndexOf("."));
+            url.add(fileName);
+
+        }
+        page.setUrlList(url);
+        request.setAttribute("page", page);
+
+
+        return "showAllByCilck";
+    }
 
 }

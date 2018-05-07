@@ -35,7 +35,7 @@
         <br>
         <input type="submit" value="登录" style="color:#BC8F8F">
     </form>
-    <form action="zhuce.jsp">
+    <form action="register.jsp">
         <input type="submit" value="注册" style="color:#BC8F8F">
     </form>
 </center>

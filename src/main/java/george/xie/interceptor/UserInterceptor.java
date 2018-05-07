@@ -21,7 +21,7 @@ public class UserInterceptor extends AbstractInterceptor {
         //获取当前执行的方法名
         String methodName=proxy.getMethod();
         //判断
-        if(!"login".equals(methodName)){
+        if(!"login".equals(methodName)&&!"register".equals(methodName)){
             Object obj=ac.getSession().get("userInfo");
             if(obj==null){
                 //没有登陆
