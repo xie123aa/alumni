@@ -12,8 +12,8 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<div id="nav">
+<body class="bg-info" >
+<div id="nav" >
     <ul class="nav nav-pills nav-stacked">
         <li role="presentation"><a href="${pageContext.request.contextPath }/showAll.action" target="rightFrame">最新查看</a></li>
         <li role="presentation"><a href="${pageContext.request.contextPath }/showbycomment.action" target="rightFrame">最多评论</a></li>

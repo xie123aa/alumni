@@ -8,4 +8,6 @@ public interface MessageDao {
     public void save(Message message);
     public List<Message> getByUid(int uid);
     public void update(Message message);
+    public Message getById(int id);
+
 }

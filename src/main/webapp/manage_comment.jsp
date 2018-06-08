@@ -11,23 +11,36 @@
 <head>
     <title>Title</title>
 </head>
-
 <body>
 <c:if test="${requestScope.page.list==null}">
-   您展示没有发布任何照片
+   您展示没有发布评论
 </c:if>
+<table class="table table-hover">
+    <thead>
+    <th>评论图片的标题</th>
+    <th>图片作者</th>
+    <th>发布时间</th>
+    <th>内容</th>
+    <th>操作</th>
+    </thead>
+    <tbody>
 <c:forEach  items="${requestScope.page.list}" var="i" begin="0" end="20" varStatus="loop">
-   <div id="input${i.id}"+code>
-           ${i.userEntity.username}回复${i.content}
-    <input class="shanchu1" type="button" value="删除"   code="${i.id}"/>
-    <br>
+<tr id="input${i.id}"+code>
+    <td>${i.content1.title}</td>
+    <td>${i.userEntity.name}</td>
+    <td>${i.creatTime}</td>
+    <td>${i.content}</td>
+    <td> <input id="input"  class="shanchu" type="button" value="删除"  code="${i.id}"/></td>
+</tr>
    </div>
 </c:forEach>
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    </tbody>
+</table>
+<script src="${pageContext.request.contextPath}/res/common/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     var domain = "${pageContext.request.contextPath}";
 
-    $(".shanchu1").click(function(){  //找到删除按钮，对其添加单击事件，单击之后执行事件
+    $(".shanchu").click(function(){  //找到删除按钮，对其添加单击事件，单击之后执行事件
         var code = $(this).attr("code");   //找到属性值
         $.post(domain+"/deleteComment.action?id="+code,function (data) {
             alert("删除成功");
@@ -44,7 +57,6 @@
         <c:forEach begin="${requestScope.page.start}" end="${requestScope.page.end}" step="1" var="i">
             <c:if test="${requestScope.page.pageNum == i}">
                 <li class="disabled"><a href="#">${i}</a></li>
-                13123213213
             </c:if>
             <c:if test="${requestScope.page.pageNum != i}">
                 <li><a href="commentManage.action?pageNum=${i}">${i}</a></li>

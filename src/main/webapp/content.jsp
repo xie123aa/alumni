@@ -14,43 +14,64 @@
         var domain = "${pageContext.request.contextPath}";
 
         var id="${content.id}"
+        var name="${sessionScope.userInfo.name}"
 
     </script>
     <title>Title</title>
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/res/common/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/res/common/js/my.js" type="text/javascript"></script>
 
 
 </head>
 <body>
-
-${content.creatTime}${content.imgurl}${content.description}${content.title}
-private int totalComment;
-private int clickCount;
-<img src="http://localhost:8088/web-image/${content.imgurl}" height="500" width="500">
-<div>
-    <div id="append">
-
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h1>${content.title}</h1>
     </div>
-    <div id="content">
-        <c:forEach  items="${requestScope.page.list}" var="i" begin="0" end="10" varStatus="loop">
-            ${i.content}
-            <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-            <br>
-        </c:forEach>
-    </div>
+    <div class="panel-body">
+        <button class="btn btn-primary btn">
+            <span class="glyphicon glyphicon-time"></span> 发布时间
+        </button>:${content.creatTime}   <button class="btn btn-primary btn">
+            <span class="glyphicon glyphicon-user"></span> 发布者
+        </button>：${content.userEntity.name}
 
+        <br>
+         <button class="btn btn-primary btn">
+        <span class="glyphicon glyphicon-info-sign"></span> 描述
+        </button>
+        ${content.description}
+        <br>
+
+        <img src="http://localhost:8088/web-image/${content.imgurl}" height="500" width="500">
+    </div>
+    <div class="panel-footer">
+        <div>
+            <div id="append">
+
+            </div>
+            <div id="content">
+                <c:forEach  items="${requestScope.page.list}" var="i" begin="0" end="10" varStatus="loop">
+                    <div class="well well-sm"><span class="text-success">${i.userEntity.name}在${i.creatTime}回复：</span>
+                        <br> ${i.content}</div>
+
+                </c:forEach>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+
 <c:if test="${requestScope.page.totalPage==0}">
     暂无评论
 
 </c:if>
 
 <div id="reply">
-    <textarea class="form-control" rows="3" id="comment"></textarea>
+    <textarea class="form-control" rows="3" id="comment" placeholder="输入你的评论"></textarea>
     <br>
     <button type="button" class="btn btn-primary" id="btn">评论</button>
-    结果：<span id="result"></span>
 </div>
 <!--翻页时进行判断jsp标准标签库	 -->
 <%--如果当前页为第一页时且不是最后一页，就没有上一页这个超链接显示 ，有下一页显示--%>

@@ -2,6 +2,7 @@ package george.xie.atcion;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import george.xie.entity.Content;
 import george.xie.entity.Message;
 import george.xie.entity.UserEntity;
 import george.xie.service.MessageService;
@@ -26,5 +27,13 @@ public class MessageAction extends ActionSupport {
         List<Message> list=messageService.getByUid(user.getUid());
         request.setAttribute("list",list);
         return SUCCESS;
+    }
+    public  String review(){
+       int id= Integer.parseInt(request.getParameter("id"));
+        Message message=messageService.getById(id);
+        request.setAttribute("content",message.getContent().getId());
+
+
+        return "review";
     }
 }

@@ -6,9 +6,11 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import george.xie.entity.Comment;
 import george.xie.entity.Content;
+import george.xie.entity.Message;
 import george.xie.entity.UserEntity;
 import george.xie.service.CommentService;
 import george.xie.service.ContentService;
+import george.xie.service.MessageService;
 import george.xie.utils.Page;
 import net.coobird.thumbnailator.Thumbnails;
 import org.apache.struts2.ServletActionContext;
@@ -25,7 +27,7 @@ public class ContentAction extends ActionSupport {
     private Content content=new Content();
     private ContentService contentService;
     private CommentService commentService;
-
+    private MessageService messageService;
     public void setCommentService(CommentService commentService) {
         this.commentService = commentService;
     }
@@ -40,8 +42,13 @@ public class ContentAction extends ActionSupport {
     private ActionContext context = ActionContext.getContext();
     private HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
 
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
     /**
      * 保存图片内容
+
      * @return
      * @throws Exception
      */
@@ -75,7 +82,7 @@ public class ContentAction extends ActionSupport {
      * @return
      */
     public String showAll(){
-        int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
+        int pageSize=10;//分页器显示大小，即在数据库中查询的记录数目
         int pageNum=1;//当前页面的页数
         ActionContext context = ActionContext.getContext();
         HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
@@ -144,6 +151,13 @@ public class ContentAction extends ActionSupport {
         if(request.getParameter("click")!=null){//用户点击加一，用cilck参数区分是否是点击
             contentService.addClick(id);
         }
+        if(request.getParameter("mid")!=null){//用户通过回复查看文章，查看加一
+            int mid=Integer.parseInt(request.getParameter("mid"));
+            Message message=messageService.getById(mid);
+            message.setLook((byte)1);
+            messageService.update(message);
+
+        }
         Content content=contentService.getContentByID(id);
         request.setAttribute("content",content);
         int pageNum=1;
@@ -157,7 +171,7 @@ public class ContentAction extends ActionSupport {
         return "showsingle";
     }
     public String showAllByComment(){
-        int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
+        int pageSize=10;//分页器显示大小，即在数据库中查询的记录数目
         int pageNum=1;//当前页面的页数
         ActionContext context = ActionContext.getContext();
         HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);
@@ -181,7 +195,7 @@ public class ContentAction extends ActionSupport {
     }
 
     public String showAllByCilck(){
-        int pageSize=5;//分页器显示大小，即在数据库中查询的记录数目
+        int pageSize=10;//分页器显示大小，即在数据库中查询的记录数目
         int pageNum=1;//当前页面的页数
         ActionContext context = ActionContext.getContext();
         HttpServletRequest request = (HttpServletRequest) context.get(ServletActionContext.HTTP_REQUEST);

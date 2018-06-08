@@ -118,6 +118,9 @@
 		<action name="showbyclick" class="george.xie.atcion.ContentAction" method="showAllByCilck">
 			<result name="showAllByCilck">/right_click.jsp</result>
 		</action>
+		<action name="index">
+			<result name="success">index.jsp</result>
+		</action>
 
 
 	</package>

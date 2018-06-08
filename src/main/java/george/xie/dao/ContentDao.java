@@ -1,6 +1,7 @@
 package george.xie.dao;
 
 import george.xie.entity.Content;
+import george.xie.entity.Message;
 import george.xie.utils.Page;
 
 import java.util.List;

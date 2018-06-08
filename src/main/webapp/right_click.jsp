@@ -20,12 +20,45 @@
 <body>
 显示内容的
 <div id="content">
-    <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="5" varStatus="loop">
-       <a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded"/></a>
-        <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-        <br>
-        点击数 ${requestScope.page.list[loop.count-1].clickCount}评论数${requestScope.page.list[loop.count-1].totalComment}
-    </c:forEach>
+    <table>
+        <tr>
+            <c:forEach items="${requestScope.page.urlList}" var="i" begin="0" end="4" varStatus="loop">
+                <td>
+                    <div class="deatil">
+                        <span><a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <span class="text-muted">${requestScope.page.list[loop.count-1].title}</span>
+                    <br>
+                    <span class="text-primary"><font size="2" >发布者:</font></span><font size="2">${requestScope.page.list[loop.count-1].userEntity.name}&nbsp;</font>
+                    <span class="text-warning"><font size="2">点击数:<span class="badge">${requestScope.page.list[loop.count-1].clickCount}</span>评论数:<span class="badge">${requestScope.page.list[loop.count-1].totalComment}</span></font></span>
+                </td>
+            </c:forEach>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <c:forEach items="${requestScope.page.urlList}" var="i" begin="5" end="10" varStatus="loop">
+
+                <td>
+                    <div class="deatil">
+
+
+                        <span><a href="showPic.action?id=${requestScope.page.list[loop.count+4].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <span class="text-muted">${requestScope.page.list[loop.count+4].title}</span>
+                    <br>
+                    <span class="text-primary"><font size="2" >发布者:</font></span><font size="2">${requestScope.page.list[loop.count+4].userEntity.name}&nbsp;</font>
+                    <span class="text-warning"><font size="2">点击数:<span class="badge">${requestScope.page.list[loop.count+4].clickCount}</span>评论数:<span class="badge">${requestScope.page.list[loop.count+4].totalComment}</span></font></span>
+
+                </td>
+
+                <%--<c:if test="${loop.count%5==0}">--%>
+                <%--<tr>--%>
+                <%--</c:if>--%>
+            </c:forEach>
+        </tr>
+    </table>
 </div>
 <!--翻页时进行判断jsp标准标签库	 -->
 <%--如果当前页为第一页时，就没有上一页这个超链接显示 --%>

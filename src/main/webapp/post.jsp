@@ -39,25 +39,28 @@
 </head>
 <body>
 <%-- action被覆盖--%>
-<form id="jvForm" action="add.action" method="post" enctype="multipart/form-data">
-    <input type="text" name="content.title"/>
-    <br>
-    <input type="text" name="description"/>
-    <br>
-    <td>上传商品图片(90x150尺寸):</td>
-    <td width="80%" class="pn-fcontent">
-        注:该尺寸图片必须为90x150。图片大小不超过5M
-    </td>
-    </tr>
-    <tr>
-        <td width="20%" class="pn-flabel pn-flabel-h"></td>
-        <td width="80%" class="pn-fcontent">
-            <img width="100" height="100" id="allImgUrl"/>
-            <input type="hidden" name="imgurl" id="path"/>
-            <input type="file" onchange="uploadPic()" name="pic"/>
-            <input type="submit" class="submit" value="提交"/> &nbsp; <input type="reset" class="reset" value="重置"/>
-        </td>
-    </tr>
-</form>
+<div class="jumbotron">
+    <div class="container">
+        <form id="jvForm" action="add.action" method="post" enctype="multipart/form-data">
+            <div class="page-header">
+                <h1>上传图片</h1>
+            </div>
+            <input type="text" class="form-control" placeholder="标题" name="content.title"  style="width:300px; height:34px;" />
+            <input type="text" class="form-control" placeholder="图片描述" name="description"/>
+            <tr>
+                <td width="20%" class="pn-flabel pn-flabel-h"></td>
+                <td width="80%" class="pn-fcontent">
+                    <img width="200" height="200" id="allImgUrl"/>
+                    注:图片显示后再提交,图片大小不超过5M
+                    <input type="hidden" name="imgurl" id="path"/>
+                    <input type="file" onchange="uploadPic()" name="pic" />
+                    <input type="submit" class="submit" value="提交" /> &nbsp;
+                    <input type="reset" class="reset" value="重置"/>
+                </td>
+            </tr>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

@@ -41,6 +41,7 @@
 		<!--注入service-->
 		<property name="contentService" ref="contentService"></property>
 		<property name="commentService" ref="commentService"></property>
+		<property name="messageService" ref="messageService"></property>
 	</bean>
 
 	<!--配置Service对象    -->

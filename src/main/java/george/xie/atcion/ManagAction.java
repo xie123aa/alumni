@@ -95,6 +95,8 @@ public class ManagAction extends ActionSupport {
     public String deleteComment(){
         int id =Integer.parseInt(request.getParameter("id"));
         commentService.delete(id);
+        //并将评论数减1
+
 
         return "deleteComment";
     }

@@ -65,10 +65,15 @@ private ContentDaoImpl contentDao;
     }
 
     /**
-     * 删除评论
+     * 删除评论并将评论数减1
      * @param id
      */
     public void delete(int id ){
+
+        Comment comment=commentDao.getCommentByID(id);
+        Content content=comment.getContent1();
+        content.setTotalComment(content.getTotalComment()-1);
+        contentDao.update(content);
         commentDao.deleteById(id);
     }
 

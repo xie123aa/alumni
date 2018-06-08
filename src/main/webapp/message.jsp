@@ -14,11 +14,13 @@
 <body>
 <div id="content">
     <c:forEach  items="${requestScope.list}" var="i" begin="0" end="10" varStatus="loop">
-        ${i.userEntity.username}：回复您：在标题${i.content.title}下：${i.comment.content}
-        <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-        <br>
 
+        <div class="well"><span class="text-primary"><font size="3">${i.userEntity.name}：在您发布的${i.content.title}下评论：${i.comment.content}</></span>
+            <button type="button" class="btn btn-default" onclick="window.location.href='showPic.action?mid=${i.id}&&id=${i.content.id}'">查看</button></div>
     </c:forEach>
+    <c:if test="${requestScope.list==null}">
+        您展示没有发布任何照片
+    </c:if>
     啦啦啦
 </div>
 

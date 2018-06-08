@@ -21,8 +21,12 @@ public class MessageDaoImpl implements MessageDao {
         List<Message> list= (List<Message>) hibernateTemplate.find("from Message art where art.cuid.id=? order by art.creattime desc",uid);
         return list;
     }
+    public Message getById(int id){
+        return hibernateTemplate.get(Message.class,id);
+    }
 
     public void update(Message message) {
+
         hibernateTemplate.update(message);
     }
 }

@@ -26,6 +26,11 @@ public class MessageService {
      * @param message
      */
     public void update(Message message){
+        messageDao.update(message);
 
     }
+    public Message getById(int id){
+        return messageDao.getById(id);
+    }
+
 }

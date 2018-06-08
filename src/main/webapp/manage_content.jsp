@@ -13,19 +13,38 @@
 </head>
 
 <body>
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="${pageContext.request.contextPath}/res/common/js/jquery-3.3.1.min.js"></script>
+<c:if test="${requestScope.page.urlList==null}">
+    您展示没有发布任何照片
+</c:if>
+<table class="table table-hover">
+    <thead>
+    <th>标题</th>
+    <th>作者</th>
+    <th>发布时间</th>
+    <th>点击数</th>
+    <th>评论数</th>
+    <th>最后评论</th>
+    <th>缩略图</th>
+    <th>操作</th>
+    </thead>
+    <tbody>
 <c:forEach  items="${requestScope.page.urlList}" var="i" begin="0" end="20" varStatus="loop">
-   <div "input${i.id}"+code>
-
-           ${requestScope.page.list[loop.count-1].title}&nbsp;;&nbsp;<img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" height="50" width="50"/>
-               <input id="input"  class="shanchu" type="button" value="删除"   code="${requestScope.page.list[loop.count-1].id}"/>
-   </div>
+<tr id="input${requestScope.page.list[loop.count-1].id}"+code>
+    <td>${requestScope.page.list[loop.count-1].title}</td>
+    <td>${requestScope.page.list[loop.count-1].userEntity.name}</td>
+    <td>${requestScope.page.list[loop.count-1].creatTime}</td>
+    <td>${requestScope.page.list[loop.count-1].clickCount}</td>
+    <td>${requestScope.page.list[loop.count-1].totalComment}</td>
+    <td>${requestScope.page.list[loop.count-1].finalComments}</td>
+    <td><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" height="50" width="50"/></td>
+    <td> <input id="input"  class="shanchu" type="button" value="删除"   code="${requestScope.page.list[loop.count-1].id}"/></td>
+</tr>
 </c:forEach>
+    </tbody>
+</table>
 <script type="text/javascript">
     var domain = "${pageContext.request.contextPath}";
-    var code;
 
     $(".shanchu").click(function(){  //找到删除按钮，对其添加单击事件，单击之后执行事件
         var code = $(this).attr("code");   //找到属性值
