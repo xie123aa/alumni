@@ -17,9 +17,15 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/alumni</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 配置连接池参数信息 -->
+		<property name="hibernate.c3p0.min_size">2</property>
+		<property name="hibernate.c3p0.max_size">4</property>
+		<property name="hibernate.c3p0.timeout">5000</property>
+		<property name="hibernate.c3p0.max_statements">10</property>
+		<property name="hibernate.c3p0.idle_test_period">30000</property>
+		<property name="hibernate.c3p0.acquire_increment">2</property>
 
-
-        <!-- 加载映射文件 -->
+		<!-- 加载映射文件 -->
 		<mapping class="george.xie.entity.UserEntity"/>
 		<mapping resource="george/xie/entity/UserEntity.hbm.xml"/>
 		<mapping class="george.xie.entity.Content"/>

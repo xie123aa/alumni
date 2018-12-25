@@ -23,7 +23,7 @@
         <c:forEach items="${requestScope.page.urlList}" var="i" begin="0" end="4" varStatus="loop">
             <td>
             <div class="deatil">
-                <span><a href="showPic.action?id=${requestScope.page.list[loop.count-1].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span><a href="showPic.action?id=${requestScope.page.list[loop.count-1].id }&click=true" target="rightFrame"><img src="http://www.anhuiligong.com/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
                 <span class="text-muted">${requestScope.page.list[loop.count-1].title}</span>
                 <br>
@@ -42,7 +42,7 @@
                     <div class="deatil">
 
 
-                        <span><a href="showPic.action?id=${requestScope.page.list[loop.count+4].id}&click=true"><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><a href="showPic.action?id=${requestScope.page.list[loop.count+4].id}&click=true" target="_parent"><img src="http://www.anhuiligong.com/web-image/thumbnai/${i}.jpg" class="img-rounded" width="200px" height="240px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
                     <span class="text-muted">${requestScope.page.list[loop.count+4].title}</span>
                     <br>

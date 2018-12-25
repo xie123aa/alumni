@@ -15,5 +15,4 @@
     <frame src="left.action" name="leftFrame" noresize="noresize" id="leftFrame" />
     <frame src="showAll.action" name="rightFrame" id="rightFrame" />
 </frameset>
-<noframes><body></body></noframes>
 </html>

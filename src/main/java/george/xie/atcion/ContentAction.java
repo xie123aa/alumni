@@ -65,7 +65,7 @@ public class ContentAction extends ActionSupport {
         contentService.addContent(content);
         //发送本地图片到服务器
         Client cilent=new Client();
-        String ur="http://localhost:8088/web-image/save/"+url;
+        String ur="http://www.anhuiligong.com/web-image/save/"+url;
         //取得本地文件
         String path = ServletActionContext.getServletContext().getRealPath("/upload");
         File imgFile=new File(path+"/"+url);
@@ -126,7 +126,7 @@ public class ContentAction extends ActionSupport {
         String filename=thumbnail.getName();
         String fileEx = filename.substring(filename.indexOf("."), filename.length());
         Client cilent=new Client();
-        String url="http://localhost:8088/web-image/thumbnai/upload/"+fileName+fileEx;
+        String url="http://www.anhuiligong.com/web-image/thumbnai/upload/"+fileName+fileEx;
         WebResource resource=cilent.resource(url);
         resource.put(String.class,thumbnail);
         //删除生成的缩略图。

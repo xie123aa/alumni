@@ -54,7 +54,7 @@ public String upload() throws Exception{
     String fileEx = picFileName.substring(picFileName.indexOf("."),
             picFileName.length());
     String path = format + fileEx;
-        String url="http://localhost:8088/web-image/upload/"+path;
+        String url="http://www.anhuiligong.com/web-image/upload/"+path;
         WebResource resource=cilent.resource(url);
 
         resource.put(String.class,pic);

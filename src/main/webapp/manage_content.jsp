@@ -37,7 +37,7 @@
     <td>${requestScope.page.list[loop.count-1].clickCount}</td>
     <td>${requestScope.page.list[loop.count-1].totalComment}</td>
     <td>${requestScope.page.list[loop.count-1].finalComments}</td>
-    <td><img src="http://localhost:8088/web-image/thumbnai/${i}.jpg" height="50" width="50"/></td>
+    <td><img src="http://www.anhuiligong.com/web-image/thumbnai/${i}.jpg" height="50" width="50"/></td>
     <td> <input id="input"  class="shanchu" type="button" value="删除"   code="${requestScope.page.list[loop.count-1].id}"/></td>
 </tr>
 </c:forEach>

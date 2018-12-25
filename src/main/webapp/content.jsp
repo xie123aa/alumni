@@ -42,7 +42,7 @@
         ${content.description}
         <br>
 
-        <img src="http://localhost:8088/web-image/${content.imgurl}" height="500" width="500">
+        <img src="http://www.anhuiligong.com/web-image/${content.imgurl}" height="500" width="500">
     </div>
     <div class="panel-footer">
         <div>
